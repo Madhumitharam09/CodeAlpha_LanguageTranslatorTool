@@ -1,0 +1,34 @@
+!pip install googletrans==4.0.0-rc1(New cell)
+from googletrans import Translator, LANGUAGES
+
+def translate_text(text, src_language, dest_language):
+    translator = Translator()
+    try:
+        translation = translator.translate(text, src=src_language, dest=dest_language)
+        return translation.text
+    except Exception as e:
+        return str(e)
+
+def list_languages():
+    return LANGUAGES
+
+def main():
+    # Display language codes
+    print("Language codes:")
+    languages = list_languages()
+    for code, name in languages.items():
+        print(f"{code}: {name}")
+
+    # User input
+    src_language = input("Enter source language code (e.g., 'en' for English): ")
+    dest_language = input("Enter destination language code (e.g., 'es' for Spanish): ")
+    text = input("Enter the text you want to translate: ")
+
+    # Translate and display result
+    translated_text = translate_text(text, src_language, dest_language)
+    print(f"Translated text: {translated_text}")
+
+# Run the main function
+main()
+
+
